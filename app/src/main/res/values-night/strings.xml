@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Dumb Charades Tool</string>
+    <string name="guessed_right">Guessed Right</string>
+    <string name="start">Start</string>
+    <string name="emoji_circle">emoji_circle</string>
+    <string name="clock_hands">clock_hands</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="msg_token_fmt" />
+    <string name="resume">Resume</string>
+    <string name="pause">Pause</string>
+    <string name="zero_timer">00:00</string>
+</resources>

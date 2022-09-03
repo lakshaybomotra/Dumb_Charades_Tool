@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "913721434245",
+    "project_id": "dumb-charades-tool",
+    "storage_bucket": "dumb-charades-tool.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913721434245:android:ff5c799c1eff43d94509ec",
+        "android_client_info": {
+          "package_name": "com.lbdev.dumbcharadestool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913721434245-n0jb2v8rbcncct9nb2331nvu1s2o3894.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoskBx3M0pjmKgyf1RJD66Bhpjh3wSc6w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913721434245-n0jb2v8rbcncct9nb2331nvu1s2o3894.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
