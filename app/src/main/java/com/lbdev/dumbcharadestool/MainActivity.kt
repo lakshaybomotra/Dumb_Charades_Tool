@@ -2,15 +2,16 @@ package com.lbdev.dumbcharadestool
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
 import android.graphics.drawable.Animatable
 import android.graphics.drawable.Drawable
+import android.os.*
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.SystemClock
+import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.res.ResourcesCompat
 import com.lbdev.dumbcharadestool.databinding.ActivityMainBinding
 
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
     private var _startTime: Long = 0
     private var pauseState: Boolean = false
     private var doubleBackToExitPressedOnce = false
+    lateinit var toggle: ActionBarDrawerToggle
+
 
     @SuppressLint("UseCompatLoadingForDrawables", "StringFormatInvalid")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +30,35 @@ class MainActivity : AppCompatActivity() {
 
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(_binding.root)
+        _binding.btnStop.isEnabled = false
+
+        val drawerLayout = _binding.drawerLayout
+        val navView = _binding.navView
+
+        toggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        Log.d("TOGGLE", "onCreate: $toggle")
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_stopwatch -> drawerLayout.closeDrawers()
+                R.id.nav_movieGenerator -> {
+                    if (_binding.btnStop.isEnabled) {
+                        Toast.makeText(this, R.string.stopwatch_is_running, Toast.LENGTH_SHORT)
+                            .show()
+                    } else {
+                        val intent = Intent(this, MovieGenerator::class.java)
+                        startActivity(intent)
+                        MainActivity().finish()
+                    }
+                }
+                R.id.nav_exit -> finish()
+            }
+            true
+        }
 
         if (isDarkMode(this)) {
             _binding.chronometer.setTextColor(
@@ -46,6 +78,8 @@ class MainActivity : AppCompatActivity() {
                 )
             )
             _binding.clock.setColorFilter(ResourcesCompat.getColor(resources, R.color.black, null))
+
+
         }
 
 
@@ -127,5 +161,12 @@ class MainActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
             doubleBackToExitPressedOnce = false
         }, 2000)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

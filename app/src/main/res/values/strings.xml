@@ -12,4 +12,7 @@
     <string name="resume">Resume</string>
     <string name="pause">Pause</string>
     <string name="zero_timer">00:00</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="stopwatch_is_running">Stopwatch Is Running</string>
 </resources>

@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DumbCharadesTool"
         tools:targetApi="31">
+        <activity
+            android:name=".MovieGenerator"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <service
             android:name=".MyFirebaseMessagingService"
@@ -36,7 +40,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
